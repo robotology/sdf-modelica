@@ -1,0 +1,15 @@
+<robot name="oneLinkPrismaticToWorld">
+    <!-- See http://gazebosim.org/tutorials/?tut=ros_urdf#RigidlyFixingAModeltotheWorld -->
+    <link name="world"/>
+    <joint name="joint0" type="prismatic">
+        <parent link="world"/>
+        <child link="link1"/>>
+        <limit effort="100.0" velocity="100.0" lower="-1000.0" upper="1000.0" />
+    </joint>
+    <link name="link1">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+        </inertial>
+    </link>
+</robot>

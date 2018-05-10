@@ -1,0 +1,4 @@
+loadModel(Modelica);
+loadFile("@CMAKE_CURRENT_BINARY_DIR@/@MODEL_NAME@.mo");
+buildModelFMU(@MODEL_NAME@, platforms = {"static"});
+getErrorString();

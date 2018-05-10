@@ -1,0 +1,26 @@
+# See https://stackoverflow.com/questions/3065220/ctest-with-multiple-commands
+macro(EXEC_CHECK CMD)
+    execute_process(COMMAND ${CMD} RESULT_VARIABLE CMD_RESULT)
+endmacro()
+
+message(STATUS "Generating modelica file  @CMAKE_CURRENT_BINARY_DIR@/@MODEL_NAME@.mo from file @MODEL_FILE@")
+execute_process(COMMAND ${SDF2MO} @MODEL_FILE@ @CMAKE_CURRENT_BINARY_DIR@/@MODEL_NAME@.mo
+                RESULT_VARIABLE CMD_RESULT)
+if(CMD_RESULT)
+  message(FATAL_ERROR "Error (return value: ${CMD_RESULT}) running sdf2modelica")
+endif()
+
+execute_process(COMMAND @OMC_COMPILER@ @CMAKE_CURRENT_BINARY_DIR@/mo2fmu_@MODEL_NAME@.mos
+                RESULT_VARIABLE CMD_RESULT)
+
+if(CMD_RESULT)
+  message(FATAL_ERROR "Error (return value: ${CMD_RESULT}) running mo2fmu")
+endif()
+
+if(NOT EXISTS @CMAKE_CURRENT_BINARY_DIR@/@MODEL_NAME@.fmu)
+  message(FATAL_ERROR "Error running mo2fmu, fmu file @CMAKE_CURRENT_BINARY_DIR@/@MODEL_NAME@.fmu does not exist")
+else()
+  file(REMOVE @CMAKE_CURRENT_BINARY_DIR@/@MODEL_NAME@.fmu)
+endif()
+
+

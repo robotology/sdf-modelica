@@ -1,0 +1,14 @@
+<robot name="oneLinkFixedToWorld">
+    <!-- See http://gazebosim.org/tutorials/?tut=ros_urdf#RigidlyFixingAModeltotheWorld -->
+    <link name="world"/>
+    <joint name="joint0" type="fixed">
+        <parent link="world"/>
+        <child link="link1"/>
+    </joint>
+    <link name="link1">
+        <inertial>
+            <mass value="1" />
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+        </inertial>
+    </link>
+</robot>
