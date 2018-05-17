@@ -249,5 +249,10 @@ extent={ {-200,-200},{200,200} })));
 end twoLinks;
 ~~~
 
+Note: the additional empty lines in the generated modelica model are a known issue, see https://github.com/robotology-playground/sdf-modelica/issues/5 .
 
+This model is render in [OpenModelica](https://openmodelica.org/) as:
 
+![twoLinks model](https://user-images.githubusercontent.com/1857049/40165638-c92b527c-59bc-11e8-94a3-6253e3fe5417.png)
+
+The flange indicated with the `joint_1_2` label is a classical Modelica acausal flange of type [`Modelica.Mechanics.Rotational.Interfaces.Flange_a`](https://doc.modelica.org/help/Modelica_Mechanics_Rotational_Interfaces.html#Modelica.Mechanics.Rotational.Interfaces.Flange_a), so the model can be interfaced with arbitrary Modelica models.  
