@@ -15,13 +15,13 @@ Simulation Description Format to Modelica models converter.
  Furthermore, the amount of implemented feature is quite limited.**.
 
 # Background
-This software provide a tool (`sdf2modelica`) and a C++ library to convert 3D rigid body mechanical
-systems described using the [Gazebo Simulator](http://gazebosim.org/)'s [Simulation Description Format files](http://sdformat.org/) to
+This software provides the user a tool (`sdf2modelica`) and a C++ library to convert 3D rigid body mechanical
+systems described by the [Gazebo Simulator](http://gazebosim.org/)'s [Simulation Description Format files](http://sdformat.org/) to 
 [Modelica models](https://www.modelica.org/) that use the [Modelica.Mechanics.MultiBody](https://doc.modelica.org/help/Modelica_Mechanics_MultiBody.html) library.
 
-It use the standard reference [`sdformat` library](http://sdformat.org) to parse SDF file. As this library provide support for automatically
+The software uses the standard reference [`sdformat` library](http://sdformat.org) to parse SDF file. As this library provides support to automatically
 convert [ROS](http://www.ros.org/)'s [Unified Robot Description Format (URDF)](http://wiki.ros.org/urdf) to SDF files, `sdf-modelica` can also be used to
-convert mechanical system represented using URDF to Modelica simulation models.
+convert mechanical systems represented using URDF to Modelica simulation models.
 
 # Dependencies
 sdf-modelica library depends on
