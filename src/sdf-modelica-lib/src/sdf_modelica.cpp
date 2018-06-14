@@ -28,6 +28,7 @@
 #include <cassert>
 #include <map>
 #include <sstream>
+#include <regex>
 
 namespace sdf_modelica
 {
@@ -118,8 +119,16 @@ bool modelicaFromSDF(sdf::SDFPtr sdf,
   data["fileName"] = options.originalFilename;
 
   // modelName
-  data["modelName"] = modelElement->Get<std::string>("name");
-
+  const std::string tmpModelName=modelElement->Get<std::string>("name");
+  data["modelName"] = tmpModelName;
+  
+  // Modelica Language specification Version 3.3 Appendix B
+  if (!std::regex_match (tmpModelName, std::regex("\\w+") ))
+  {
+    std::cerr << "sdf_modelica: Passed SDF modelName contains not allowed char:"<<tmpModelName << std::endl;
+    return false;
+  }
+      
   std::map<std::string, ignition::math::Pose3d> linkPoses;
 
   // parse model links
@@ -137,6 +146,12 @@ bool modelicaFromSDF(sdf::SDFPtr sdf,
 
     const std::string linkName = linkElement->Get<std::string>("name");
     link["name"] = linkName;
+    // Modelica Language specification Version 3.3 Appendix B
+    if (!std::regex_match (linkName, std::regex("\\w+") ))
+    {
+      std::cerr << "sdf_modelica: Passed SDF link name contains not allowed char:"<<linkName << std::endl;
+      return false;
+    }
 
     // Set default values
     ignition::math::Pose3d inertiaPose = ignition::math::Pose3d::Zero;
@@ -200,8 +215,15 @@ bool modelicaFromSDF(sdf::SDFPtr sdf,
   {
     nlohmann::json joint;
 
-    std::string jointName = jointElement->Get<std::string>("name");
+    const std::string jointName = jointElement->Get<std::string>("name");
     joint["name"] = jointName;
+   // Modelica Language specification Version 3.3 Appendix B
+    if (!std::regex_match (jointName, std::regex("\\w+") ))
+    {
+      std::cerr << "sdf_modelica: Passed SDF joint name contains not allowed char:"<<jointName << std::endl;
+      return false;
+    }
+
     std::string jointType = jointElement->Get<std::string>("type");
     joint["type"] = jointType;
 

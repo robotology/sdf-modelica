@@ -9,6 +9,7 @@ Simulation Description Format to Modelica models converter.
 - [Dependencies](#dependencies)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Naming](#naming)
 
 # About versioning
 **The project is undergoing _heavy_ development and should be consired in alpha development stage: the APIs and the tools behaviour will be subject to changes quite often.
@@ -256,3 +257,7 @@ This model is render in [OpenModelica](https://openmodelica.org/) as:
 ![twoLinks model](https://user-images.githubusercontent.com/1857049/40165638-c92b527c-59bc-11e8-94a3-6253e3fe5417.png)
 
 The flange indicated with the `joint_1_2` label is a classical Modelica acausal flange of type [`Modelica.Mechanics.Rotational.Interfaces.Flange_a`](https://doc.modelica.org/help/Modelica_Mechanics_Rotational_Interfaces.html#Modelica.Mechanics.Rotational.Interfaces.Flange_a), so the model can be interfaced with arbitrary Modelica models.  
+
+## Naming
+Due to the Modelica naming conventions, the URDF or SDF file that is translated should contain model name, link names and joint names with only alphanumeric or underscore characters.
+See also Modelica language specification Appendix B https://www.modelica.org/documents.
