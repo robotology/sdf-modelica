@@ -122,7 +122,7 @@ bool modelicaFromSDF(sdf::SDFPtr sdf,
   const std::string tmpModelName=modelElement->Get<std::string>("name");
   data["modelName"] = tmpModelName;
   
-  //Modelica Language specification Version 3.3 Apendix B
+  // Modelica Language specification Version 3.3 Appendix B
   if (!std::regex_match (tmpModelName, std::regex("\\w+") ))
   {
     std::cerr << "sdf_modelica: Passed SDF modelName contains not allowed char:"<<tmpModelName << std::endl;
@@ -146,7 +146,7 @@ bool modelicaFromSDF(sdf::SDFPtr sdf,
 
     const std::string linkName = linkElement->Get<std::string>("name");
     link["name"] = linkName;
-    //Modelica Language specification Version 3.3 Apendix B
+    // Modelica Language specification Version 3.3 Appendix B
     if (!std::regex_match (linkName, std::regex("\\w+") ))
     {
       std::cerr << "sdf_modelica: Passed SDF link name contains not allowed char:"<<linkName << std::endl;
@@ -217,7 +217,7 @@ bool modelicaFromSDF(sdf::SDFPtr sdf,
 
     const std::string jointName = jointElement->Get<std::string>("name");
     joint["name"] = jointName;
-   //Modelica Language specification Version 3.3 Apendix B
+   // Modelica Language specification Version 3.3 Appendix B
     if (!std::regex_match (jointName, std::regex("\\w+") ))
     {
       std::cerr << "sdf_modelica: Passed SDF joint name contains not allowed char:"<<jointName << std::endl;
