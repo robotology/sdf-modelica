@@ -97,10 +97,6 @@ if(NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/nlohmann/json.hpp)
   file(DOWNLOAD https://raw.githubusercontent.com/nlohmann/json/v3.1.2/single_include/nlohmann/json.hpp
                 ${CMAKE_CURRENT_BINARY_DIR}/nlohmann/json.hpp)
 endif()
-if(NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/nlohmann/json.hpp)
-  file(DOWNLOAD https://raw.githubusercontent.com/nlohmann/json/v3.1.2/single_include/nlohmann/json.hpp
-                ${CMAKE_CURRENT_BINARY_DIR}/nlohmann/json.hpp)
-endif()
 
 ### Compile- and install-related commands.
 add_subdirectory(src)
