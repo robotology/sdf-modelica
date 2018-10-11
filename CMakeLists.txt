@@ -110,3 +110,6 @@ install_basic_package_files(${PROJECT_NAME}
                             NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 # Add the uninstall target
 include(AddUninstallTarget)
+
+# Include clang-format target
+include(AddClangFormatTarget)
