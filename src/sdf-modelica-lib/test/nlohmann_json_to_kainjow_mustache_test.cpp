@@ -13,8 +13,7 @@
 
 void dummyAssert(bool condition)
 {
-    if (!condition)
-    {
+    if (!condition) {
         exit(EXIT_FAILURE);
     }
 }
@@ -31,27 +30,22 @@ void testArrayConversions()
     dummyAssert(km_array.is_list());
     kainjow::mustache::list km_list = km_array.list_value();
     dummyAssert(nj_array.size() == km_list.size());
-    for (int i=0; i < nj_array.size(); i++)
-    {
+    for (int i = 0; i < nj_array.size(); i++) {
         std::string nj_val;
-        if (nj_array[i].is_string())
-        {
+        if (nj_array[i].is_string()) {
             nj_val = nj_array[i];
         }
-        if (nj_array[i].is_number_integer())
-        {
+        if (nj_array[i].is_number_integer()) {
             int nj_val_int = nj_array[i];
             nj_val = std::to_string(nj_val_int);
         }
-        if (nj_array[i].is_number_float())
-        {
+        if (nj_array[i].is_number_float()) {
             double nj_val_dbl = nj_array[i];
             nj_val = std::to_string(nj_val_dbl);
         }
         dummyAssert(nj_val == km_list[i].string_value());
     }
 }
-
 
 int main(int argc, char** argv)
 {

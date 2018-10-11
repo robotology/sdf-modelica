@@ -11,31 +11,29 @@
 
 #include <sdf_modelica/sdf_modelica.h>
 
-#include <cstdlib>
 #include <cmath>
+#include <cstdlib>
 #include <iostream>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-  // TODO(traversaro) : implement actual flag parsing
-  if (argc != 3)
-  {
-    std::cerr << "Usage: sdf2modelica inputModel.(sdf|urdf) outModel.mo" << std::endl;
+    // TODO(traversaro) : implement actual flag parsing
+    if (argc != 3) {
+        std::cerr << "Usage: sdf2modelica inputModel.(sdf|urdf) outModel.mo" << std::endl;
+        return EXIT_SUCCESS;
+    }
+
+    std::string modelicaModelString;
+    bool ok = sdf_modelica::modelicaFromSDFFile(argv[1], modelicaModelString);
+
+    if (!ok) {
+        std::cerr << "sdf2modelica: failure in parsing SDF model from " << argv[1] << std::endl;
+    }
+
+    std::string outputFileName = argv[2];
+    std::ofstream ofs(outputFileName.c_str(), std::ofstream::out);
+
+    ofs << modelicaModelString;
+
     return EXIT_SUCCESS;
-  }
-
-  std::string modelicaModelString;
-  bool ok = sdf_modelica::modelicaFromSDFFile(argv[1], modelicaModelString);
-
-  if (!ok)
-  {
-    std::cerr << "sdf2modelica: failure in parsing SDF model from " << argv[1] << std::endl;
-  }
-
-  std::string outputFileName = argv[2];
-  std::ofstream ofs (outputFileName.c_str(), std::ofstream::out);
-
-  ofs << modelicaModelString;
-
-  return EXIT_SUCCESS;
 }

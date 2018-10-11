@@ -17,8 +17,7 @@
 #include <ignition/math/graph/Graph.hh>
 #include <nlohmann/json.hpp>
 
-namespace sdf_modelica
-{
+namespace sdf_modelica {
 
 enum ConnectionSide
 {
@@ -36,12 +35,19 @@ struct ModelicaGraphComponentInfo
     bool fixedLocation;
     int fixedLocationModelicaUnitsX;
     int fixedLocationModelicaUnitsY;
-    ModelicaGraphComponentInfo(): name(""), fixedLocation(false),
-                                  fixedLocationModelicaUnitsX(0), fixedLocationModelicaUnitsY(0) {};
-    ModelicaGraphComponentInfo(std::string arg_name, bool a_fixedLocation=false,
-                                int a_fixedLocationModelicaUnitsX=0, int a_fixedLocationModelicaUnitsY=0):
-      name(arg_name), fixedLocation(a_fixedLocation),
-      fixedLocationModelicaUnitsX(a_fixedLocationModelicaUnitsX), fixedLocationModelicaUnitsY(a_fixedLocationModelicaUnitsY) {};
+    ModelicaGraphComponentInfo()
+        : name("")
+        , fixedLocation(false)
+        , fixedLocationModelicaUnitsX(0)
+        , fixedLocationModelicaUnitsY(0){};
+    ModelicaGraphComponentInfo(std::string arg_name,
+                               bool a_fixedLocation = false,
+                               int a_fixedLocationModelicaUnitsX = 0,
+                               int a_fixedLocationModelicaUnitsY = 0)
+        : name(arg_name)
+        , fixedLocation(a_fixedLocation)
+        , fixedLocationModelicaUnitsX(a_fixedLocationModelicaUnitsX)
+        , fixedLocationModelicaUnitsY(a_fixedLocationModelicaUnitsY){};
 };
 
 /**
@@ -51,13 +57,16 @@ struct ModelicaGraphConnectionInfo
 {
     ConnectionSide firstSide;
     ConnectionSide secondSide;
-    ModelicaGraphConnectionInfo(): firstSide(EAST), secondSide(WEST) {};
-    ModelicaGraphConnectionInfo(ConnectionSide first, ConnectionSide second):
-      firstSide(first), secondSide(second) {};
+    ModelicaGraphConnectionInfo()
+        : firstSide(EAST)
+        , secondSide(WEST){};
+    ModelicaGraphConnectionInfo(ConnectionSide first, ConnectionSide second)
+        : firstSide(first)
+        , secondSide(second){};
 };
 
-using DiagramGraph = ignition::math::graph::DirectedGraph<ModelicaGraphComponentInfo, ModelicaGraphConnectionInfo>;
-
+using DiagramGraph
+    = ignition::math::graph::DirectedGraph<ModelicaGraphComponentInfo, ModelicaGraphConnectionInfo>;
 
 /**
  * Add diagram layout annotations using a simple hand-written model.
@@ -68,9 +77,7 @@ using DiagramGraph = ignition::math::graph::DirectedGraph<ModelicaGraphComponent
  * @param[in,out] modelData data used the for the mustache template generation
  * @return        true if all went well, false otherwise
  */
-bool add_diagram_layout_handtuned(const DiagramGraph& modelGraph,
-                                  nlohmann::json& modelData);
-
+bool add_diagram_layout_handtuned(const DiagramGraph& modelGraph, nlohmann::json& modelData);
 
 /**
  * Add empty diagram layout annotations.
@@ -82,8 +89,7 @@ bool add_diagram_layout_handtuned(const DiagramGraph& modelGraph,
  * @param[in,out] modelData data used the for the mustache template generation
  * @return        true if all went well, false otherwise
  */
-bool add_diagram_layout_dummy(const DiagramGraph& modelGraph,
-                              nlohmann::json& modelData);
+bool add_diagram_layout_dummy(const DiagramGraph& modelGraph, nlohmann::json& modelData);
 
 /**
  * Add annotation for the icon rappresentation of the model.
@@ -93,12 +99,14 @@ bool add_diagram_layout_dummy(const DiagramGraph& modelGraph,
  *
  * @param[in,out]      graph    graph of Modelica-component connections
  * @param[in,out] modelData data used the for the mustache template generation
- * @param[in,out] modelicaComponent2ignGraphId map between modelica component names and ign graph VertexId
+ * @param[in,out] modelicaComponent2ignGraphId map between modelica component names and ign graph
+ * VertexId
  * @return        true if all went well, false otherwise
  */
-bool add_icon_layout(DiagramGraph& modelGraph,
-                     nlohmann::json& modelData,
-                     std::map<std::string, ignition::math::graph::VertexId>& modelicaComponent2ignGraphId);
-}
+bool add_icon_layout(
+    DiagramGraph& modelGraph,
+    nlohmann::json& modelData,
+    std::map<std::string, ignition::math::graph::VertexId>& modelicaComponent2ignGraphId);
+} // namespace sdf_modelica
 
 #endif
