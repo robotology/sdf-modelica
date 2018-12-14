@@ -9,7 +9,6 @@
  * at your option.
  */
 
-
 #ifndef SDF_MODELICA_H
 #define SDF_MODELICA_H
 
@@ -17,8 +16,7 @@
 
 #include <sdf/sdf.hh>
 
-namespace sdf_modelica
-{
+namespace sdf_modelica {
 
 /**
  * \brief Options for the SDF Modelica converter
@@ -27,12 +25,12 @@ struct SDFModelicaOptions
 {
 
     /**
-      * Original filename of the converted SDF.
-      *
-      * This filename is inserted in the generate modelica model.
-      *
-      * Default: empty string.
-      */
+     * Original filename of the converted SDF.
+     *
+     * This filename is inserted in the generate modelica model.
+     *
+     * Default: empty string.
+     */
     std::string originalFilename{""};
 
     /**
@@ -40,15 +38,14 @@ struct SDFModelicaOptions
      *
      * Default: the base frame of the model.
      */
-    //std::vector<std::string> baseFrameConnectors;
+    // std::vector<std::string> baseFrameConnectors;
 
     /**
      * Frame connectors rendered on the top of the component.
      *
      * Default: empty
      */
-    //std::vector<std::string> topFrameConnectors;
-
+    // std::vector<std::string> topFrameConnectors;
 
     /**
      * Constructor, containing default values.
@@ -68,7 +65,7 @@ struct SDFModelicaOptions
  */
 bool modelicaFromSDFFile(const std::string& sdf_filename,
                          std::string& modelica_model,
-                         const SDFModelicaOptions options=SDFModelicaOptions());
+                         const SDFModelicaOptions options = SDFModelicaOptions());
 
 /**
  * \brief Create a Modelica model object from a SDF string.
@@ -80,7 +77,7 @@ bool modelicaFromSDFFile(const std::string& sdf_filename,
  */
 bool modelicaFromSDFString(const std::string& sdf_string,
                            std::string& modelica_model,
-                           const SDFModelicaOptions options=SDFModelicaOptions());
+                           const SDFModelicaOptions options = SDFModelicaOptions());
 
 /**
  * \brief Create a Modelica model object from a SDF object.
@@ -92,9 +89,8 @@ bool modelicaFromSDFString(const std::string& sdf_string,
  */
 bool modelicaFromSDF(sdf::SDFPtr sdf,
                      std::string& modelica_model,
-                     const SDFModelicaOptions options=SDFModelicaOptions());
+                     const SDFModelicaOptions options = SDFModelicaOptions());
 
-
-}
+} // namespace sdf_modelica
 
 #endif

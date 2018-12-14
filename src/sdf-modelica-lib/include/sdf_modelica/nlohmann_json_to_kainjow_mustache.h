@@ -14,11 +14,10 @@
 
 #include <string>
 
-#include <nlohmann/json.hpp>
 #include <mustache.hpp>
+#include <nlohmann/json.hpp>
 
-namespace sdf_modelica
-{
+namespace sdf_modelica {
 
 /**
  * @brief Convert a  nlohmann::json to a kainjow::mustache::data
@@ -38,6 +37,6 @@ bool nlohmann_json_to_kainjow_mustache(const nlohmann::json& inputData,
  */
 kainjow::mustache::data nlohmann_json_to_kainjow_mustache(const nlohmann::json& inputData);
 
-}
+} // namespace sdf_modelica
 
 #endif

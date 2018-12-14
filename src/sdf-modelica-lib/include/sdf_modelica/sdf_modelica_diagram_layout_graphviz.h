@@ -19,10 +19,7 @@
 
 #include <sdf_modelica/sdf_modelica_diagram_layout.h>
 
-
-namespace sdf_modelica
-{
-
+namespace sdf_modelica {
 
 /**
  * Add diagram layout annotations using graphviz.
@@ -34,6 +31,6 @@ namespace sdf_modelica
 bool add_diagram_layout_graphviz(const sdf_modelica::DiagramGraph& modelGraph,
                                  nlohmann::json& modelData);
 
-}
+} // namespace sdf_modelica
 
 #endif
