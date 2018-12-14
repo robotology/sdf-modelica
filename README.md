@@ -31,7 +31,7 @@ sdf-modelica library depends on
 # Installation
 
 As the first step, install [SDFormat](http://sdformat.org/) and make sure that
-it can be find by [CMake](https://cmake.org/), either by installing it on a
+it can be found by [CMake](https://cmake.org/), either by installing it on a
 system location or by adding its install prefix to the [`CMAKE_PREFIX_PATH` enviromental variable](https://cmake.org/cmake/help/v3.5/command/find_package.html).
 
 After that, use the following commands to build and install `sdf-modelica`.
